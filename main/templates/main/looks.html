@@ -1,0 +1,37 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Мій сайт{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>Task Board</h1>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="{% url 'home' %}">Головна</a></li>
+                <li><a href="{% url 'about' %}">Про мене</a></li>
+                <div class="sidebar-header">
+                    <h1>Task Board</h1>
+                </div>
+                <li><a href="{% url 'task_list' %}">Список завдань</a></li>
+                <li><a href="{% url 'create_task' %}">Створити завдання</a></li>
+            </ul>
+        </aside>
+
+        <main class="content">
+            {% block content %}
+            {% endblock %}
+        </main>
+    </div>
+
+    <footer>
+        © 2025 Task Board. Усі права захищені.
+    </footer>
+</body>
+</html>

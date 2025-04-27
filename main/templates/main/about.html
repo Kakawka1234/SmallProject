@@ -1,0 +1,18 @@
+{% extends "main/looks.html" %}
+{% load static%}
+
+{% block title %}
+Про нас
+{% endblock %}
+
+{% block content %}
+<section class="about">
+    <h1>Про мене</h1>
+    <p>Привіт! Мене звати Назар. Я роблю цей сайт чисто для себе і своїх потреб. Проте я сподіваюся, що і Вам сподобається!</p>
+    <div class="person">
+        <img src="{% static 'main/img/123.png' %}" alt="Назар">
+        <h2>Назар</h2>
+        <p>Fullstack Developer</p>
+    </div>
+</section>
+{% endblock %}

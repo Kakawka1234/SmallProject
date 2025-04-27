@@ -1,0 +1,32 @@
+{% extends "main/looks.html" %}
+{% load static%}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'mainapp/css/style.css' %}">
+<div class="content">
+    <h2>Список завдань</h2>
+    <div class="task-list">
+        {% for task in tasks %}
+        <div class="task-item">
+            <div class="task-box">
+                <h3>{{ task.title }}</h3>
+                <p>Статус: {{ task.get_status_display }}</p>
+                <form method="POST" action="{% url 'change_status' task.id %}">
+                    {% csrf_token %}
+                    <label for="status">Змінити статус:</label>
+                    <select name="status" id="status">
+                        <option value="new" {% if task.status == 'new' %}selected{% endif %}>Новий</option>
+                        <option value="in_progress" {% if task.status == 'in_progress' %}selected{% endif %}>В процесі</option>
+                        <option value="completed" {% if task.status == 'completed' %}selected{% endif %}>Виконано</option>
+                    </select>
+                    <button type="submit">Змінити</button>
+                </form>
+                <p>Дата створення: {{ task.created_at }}</p>
+            </div>
+        </div>
+        {% empty %}
+        <p>Немає завдань для відображення.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

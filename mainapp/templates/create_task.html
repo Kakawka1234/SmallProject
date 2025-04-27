@@ -1,0 +1,14 @@
+{% extends "main/looks.html" %}
+{% load static%}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'mainapp/css/style.css' %}">
+<div class="content">
+    <h2>Створити завдання</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Створити завдання</button>
+    </form>
+</div>
+{% endblock %}
